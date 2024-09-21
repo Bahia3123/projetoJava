@@ -3,8 +3,12 @@ package org.example.projectavaliacao;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HelloController {
 
+    private  List <Conta> contas = new ArrayList();
 
     @FXML
     private ToggleGroup brabo;
@@ -57,6 +61,22 @@ public class HelloController {
             txtVencimento.setDisable(false);
         }
 
+    }
 
+    @FXML
+    protected void onCadastrarConta(){
+        if (rbCorrente.isSelected()){
+            Conta conta = new Conta(Integer.parseInt(txtConta.getText()),txtTitular.getText());
+            contas.add(conta);
+
+        } else if (rbEspecial.isSelected()) {
+            Especial contaEspecial = new Especial(Integer.parseInt(txtConta.getText()),txtTitular.getText(),Double.parseDouble(txtLimite.getText()));
+            contas.add(contaEspecial);s
+        }else {
+            Poupanca contaPoupanca = new Poupanca(Integer.parseInt(txtConta.getText()),txtTitular.getText(),Integer.parseInt(txtVencimento.getText()));
+            contas.add(contaPoupanca);
+        }
+
+        txtDados.setText(contas.toString());
     }
 }

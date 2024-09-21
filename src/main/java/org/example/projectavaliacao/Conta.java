@@ -6,6 +6,7 @@ public class Conta {
     private String titular;
 
     private Double saldo;
+    private String limite;
 
     public Conta(Integer numero,String titular) {
         this.numero = numero;
@@ -48,5 +49,15 @@ public class Conta {
 }
     public void setSaldo(Double saldo) {
         this.saldo = saldo;
+    }
+
+
+    @Override
+    public String toString() {
+        return "numero=" + numero +
+                ", titular='" + titular + '\'' +
+                "Limite = " + this.limite + '\'' +
+                ", saldo=" + saldo + System.lineSeparator();
+        
     }
 }
